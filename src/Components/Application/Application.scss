@@ -1,0 +1,166 @@
+@import "../../Style/_color.scss";
+@import "../../Style/_extends.scss";
+
+.vertical-tabs {
+  font-family: "Open Sans", sans-serif;
+  counter-reset: count;
+
+  .rwt__tablist {
+    width: 296px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 0;
+    text-align: start;
+
+    .rwt__tab {
+      text-align: start;
+      color: $lightGray;
+      transition: $trans-color;
+      font-size: 1rem;
+      position: relative;
+
+      &::before {
+        counter-increment: count;
+        content: counter(count);
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background-color: $lightGray;
+        left: 0;
+        border-radius: 50%;
+        color: #fff;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .done {
+      color: $green;
+
+      &::before {
+        background-color: $green;
+        content: url(../../images/check.svg);
+      }
+    }
+
+    .rwt__tab[aria-selected="false"]:hover,
+    .rwt__tab:focus {
+      background-color: transparent;
+      color: darken($lightGray, 15%);
+    }
+    .rwt__tab[aria-selected="true"]:after {
+      content: none;
+    }
+    .rwt__tab[aria-selected="true"] {
+      color: $primary;
+
+      &::before {
+        background-color: $primary;
+        transition: $trans-bg;
+      }
+    }
+  }
+
+  .rwt__tabpanel {
+    width: 100%;
+    // background-color: $white;
+    border-radius: 5px;
+    padding: 15px 0px;
+    animation: animateBG 0.4s ease-in-out;
+    font-size: 0.875rem;
+    color: $darkGray;
+
+    form {
+      position: relative;
+
+      .title {
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: $gray;
+      }
+
+      .still {
+        right: calc(48.5% + 30px);
+        z-index: 1;
+      }
+
+      .present {
+        width: 48.5%;
+
+        .pre {
+          font-size: 1rem;
+          margin-top: 24px;
+          color: $gray;
+          font-weight: 700;
+        }
+      }
+
+      .length {
+        bottom: 50px;
+        left: 0px;
+        color: $lightGray;
+
+        &.red {
+          color: $red;
+        }
+      }
+    }
+  }
+
+  .even-odd {
+    padding: 30px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    &:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+
+    &:nth-of-type(even) {
+      background-color: $white;
+      border: 1px solid #ececec;
+    }
+
+    .delete {
+      position: absolute;
+      right: 12px;
+      top: 15px;
+      text-decoration: none;
+      color: $darkGray;
+      content: url(../../images/delete.svg);
+    }
+
+    &:nth-child(1) .delete {
+      display: none;
+    }
+  }
+
+  .add {
+    text-decoration: none;
+    // margin: 1rem 0 3rem;
+    display: inline-flex;
+    font-weight: 600;
+  }
+
+  .add-job {
+    text-decoration: none;
+    display: inline-flex;
+    font-weight: 600;
+  }
+}
+
+@keyframes animateBG {
+  0% {
+    // transform: translateY(5px);
+    opacity: 0;
+  }
+  100% {
+    // transform: translateY(0px);
+    opacity: 1;
+  }
+}

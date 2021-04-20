@@ -1,0 +1,23 @@
+@import "./_color.scss";
+@import "./_fonts.scss";
+
+select {
+  height: 3.5rem;
+  transition: box-shadow 0.2s ease-in-out;
+  font-size: 1rem;
+  color: $lightGray !important;
+
+  &.changed {
+    color: $primary !important;
+    font-weight: 700;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($primary, 0.25) !important;
+  }
+
+  option {
+    color: $darkGray;
+    font-weight: 400;
+  }
+}

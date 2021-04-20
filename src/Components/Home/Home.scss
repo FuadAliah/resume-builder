@@ -1,0 +1,56 @@
+@import "../../Style/_color.scss";
+@import "../../Style/_fonts.scss";
+
+.content {
+  height: 100vh;
+
+  .left-content {
+    font-size: 40px;
+    color: $darkGray;
+
+    .light {
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    
+    .bold {
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 1.125rem;
+      width: 60%;
+      margin: 1rem 0 1.75rem;
+      font-family: $Josefin;
+      color: $gray;
+      font-weight: 400;
+    }
+
+    .check {
+      font-size: 0.875rem;
+      color: $gray;
+      margin: 3px 0;
+      font-family: $Josefin;
+      margin-left: 16px;
+      position: relative;
+
+      &::before {
+        content: "✓";
+        position: absolute;
+        top: 0px;
+        left: -16px;
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+}
+
+.loading {
+  height: 100vh;
+
+  > div {
+    width: 5rem;
+    height: 5rem;
+  }
+}

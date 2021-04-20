@@ -1,0 +1,26 @@
+@import "./_color";
+
+$trans-bg: background-color 0.4s ease-in-out;
+$trans-color: color 0.4s ease-in-out;
+
+.btn.button-primary {
+  padding: 0.813rem !important;
+  font-size: 1.125rem !important;
+  border: 0;
+  background-color: $primary;
+  color: $white;
+  transition: $trans-bg;
+
+  &.save {
+    margin-left: calc(100% - 134px);
+  }
+
+  &.finish {
+    margin-left: calc(100% - 79px);
+  }
+
+  &:hover {
+    background-color: darken($primary, 10%);
+    color: $white;
+  }
+}

@@ -1,0 +1,52 @@
+@import "./_color.scss";
+@import "./_fonts.scss";
+
+.file-container {
+  margin-bottom: 2rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 20px;
+
+  input[type="file"] {
+    opacity: 0;
+    width: 134px;
+    height: 35px;
+    margin: auto;
+    position: absolute;
+    top: 68px;
+    padding: 0;
+    left: 164px;
+  }
+
+  .file-upload {
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .button-upload {
+    padding: 6px 20px;
+    color: $white;
+    font-size: 14px;
+    width: fit-content;
+    background-color: $info;
+  }
+
+  .button-change {
+    padding: 6px 20px;
+    color: $white;
+    font-size: 14px;
+    width: fit-content;
+    background-color: $warning;
+  }
+
+  span {
+    font-size: 14px;
+    color: $secondary;
+  }
+}

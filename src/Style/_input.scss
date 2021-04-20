@@ -1,0 +1,53 @@
+@import "./_color.scss";
+@import "./_fonts.scss";
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"] {
+  font-family: $Open;
+  font-size: 1rem;
+  color: $primary;
+  font-weight: 700;
+  height: 3.5rem;
+  border-radius: 5px;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &::placeholder {
+    color: $lightGray;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($primary, 0.25);
+    color: $primary;
+  }
+}
+
+label.checklabel {
+  position: absolute;
+  display: flex;
+  width: max-content;
+  right: 0;
+  margin: 0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  display: block;
+  background: url(../images/calendar.svg) no-repeat;
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  left: -103px;
+  margin: 0;
+  padding: 0;
+  height: 18px;
+  width: 18px;
+  top: 2px;
+}

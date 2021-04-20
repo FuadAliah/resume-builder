@@ -1,0 +1,9 @@
+.background {
+  background: url("./background.svg") no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1200px;
+  height: 100vh;
+  z-index: -1;
+}
