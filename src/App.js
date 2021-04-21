@@ -11,12 +11,12 @@ function App() {
     <Router>
       <div className="App-header">
         <Switch>
-          <Route exact path="https://fuadaliah.github.io/resume-builder/" component={Home}></Route>
+          <Route exact path="/" component={Home}></Route>
           <Route path="/application" component={Application}></Route>
           <Route path="/data" component={Data}></Route>
-          {/* <Route path="*">
+          <Route path="*">
             <h2>404</h2>
-          </Route> */}
+          </Route>
         </Switch>
       </div>
     </Router>
