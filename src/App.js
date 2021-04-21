@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div className="App-header">
         <Switch>
-          <Route exact path="/resume-builder/" component={Home}></Route>
+          <Route exact path="/" component={Home}></Route>
           <Route path="/application" component={Application}></Route>
           <Route path="/data" component={Data}></Route>
           <Route path="*">
