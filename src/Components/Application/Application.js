@@ -206,7 +206,7 @@ const Application = () => {
                   {experiences?.map((job, idx) => (
                     <Job key={idx} DeleteItem={DeleteItem} experiences={experiences} handleExperiences={handleExperiences} idx={idx} job={job} />
                   ))}
-                  <a className="add-job" href="#f" onClick={AddExperience}>
+                  <a className="add-job" href="# " onClick={AddExperience}>
                     + Add Another Position
                   </a>
                   <input className="btn button-primary save fw-bold" type="submit" value="Save & Next" />
