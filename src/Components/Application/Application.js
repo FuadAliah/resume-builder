@@ -194,7 +194,7 @@ const Application = () => {
                       <Course key={idx} idx={idx} DeleteItem={DeleteItem} course={course} courses={courses} handleCourse={handleCourse} />
                     ))}
                   </div>
-                  <a className="add" href="#f" onClick={AddCourse}>
+                  <a className="add" href="#/" onClick={AddCourse}>
                     + Add Another Course
                   </a>
                   <input className="btn button-primary save fw-bold" type="submit" value="Save & Next" />
