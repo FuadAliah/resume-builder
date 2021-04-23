@@ -45,16 +45,12 @@ const Application = () => {
   const [experiences, setExperiences] = useState([{ company: "", title: "", type: "", start: "", end: "", description: "", still: false }]);
   const [Tips, setTips] = useState({ experiencesTips: false, educationTips: false, skillsTips: false });
 
-  const handleExperiencesTips = () => {
-    setTips({ ...Tips, experiencesTips: !Tips.experiencesTips });
-  };
+  const handleExperiencesTips = () => setTips({ ...Tips, experiencesTips: !Tips.experiencesTips });
+  const handleEducationTips = () => setTips({ ...Tips, educationTips: !Tips.educationTips });
+  const handleSkillsTips = () => setTips({ ...Tips, skillsTips: !Tips.skillsTips });
 
-  const handleEducationTips = () => {
-    setTips({ ...Tips, educationTips: !Tips.educationTips });
-  };
-
-  const handleSkillsTips = () => {
-    setTips({ ...Tips, skillsTips: !Tips.skillsTips });
+  const closeAllTips = () => {
+    setTips({ experiencesTips: false, educationTips: false, skillsTips: false });
   };
 
   const handleSelectStyle = e => {
@@ -148,6 +144,7 @@ const Application = () => {
 
   useLayoutEffect(() => {
     setTimeout(() => setIsLoading(false), 1000);
+    document.addEventListener("mousedown", closeAllTips);
   }, [isLoading]);
 
   return (
