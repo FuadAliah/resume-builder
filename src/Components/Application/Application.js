@@ -158,7 +158,9 @@ const Application = () => {
           <div className="container mt-5">
             <Tabs defaultTab="vertical-tab-one" vertical className="vertical-tabs">
               <TabList className="me-4">
-                <Tab tabFor="vertical-tab-one">Personal Information</Tab>
+                <Tab tabFor="vertical-tab-one" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
+                  Personal Information
+                </Tab>
                 <Tab tabFor="vertical-tab-two" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
                   Educational Information
                 </Tab>
