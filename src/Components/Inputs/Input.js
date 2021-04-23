@@ -22,7 +22,7 @@ const Input = props => {
       </label>
       <input
         type={type}
-        className={`form-control ${type === "checkbox" ? "checkbox form-check-input" : ""}`}
+        className={`form-control${type === "checkbox" ? "checkbox form-check-input" : ""}`}
         id={id}
         name={name}
         placeholder={placeholder}

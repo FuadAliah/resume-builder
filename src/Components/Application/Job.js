@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Input from "../Inputs/Input";
 import Select from "../Inputs/Select";
 import Textarea from "../Inputs/Textarea";
@@ -26,9 +28,7 @@ const Job = ({ job, handleExperiences, idx, DeleteItem, experiences }) => {
         )}
       </div>
       <Textarea name="description" lable="Description" value={job.description} handleChange={handleExperiences} idx={idx} />
-      <a className="delete" href="#c" onClick={() => DeleteItem(experiences, idx)}>
-        x
-      </a>
+      <Link to="/application" type="submit" className="delete" onClick={() => DeleteItem(experiences, idx)} replace></Link>
     </div>
   );
 };

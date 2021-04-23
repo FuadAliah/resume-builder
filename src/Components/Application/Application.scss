@@ -20,6 +20,7 @@
       transition: $trans-color;
       font-size: 1rem;
       position: relative;
+      width: fit-content;
 
       &::before {
         counter-increment: count;
@@ -133,6 +134,8 @@
       text-decoration: none;
       color: $darkGray;
       content: url(../../images/delete.svg);
+      cursor: pointer;
+      color: $primary;
     }
 
     &:nth-child(1) .delete {
@@ -140,27 +143,113 @@
     }
   }
 
+  .head {
+    .subject {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .tips {
+      font-weight: 600;
+      color: $info;
+      cursor: pointer;
+      padding-left: 1.125rem;
+      user-select: none;
+
+      &::before {
+        content: url("../../images/bulb.svg");
+        position: absolute;
+        left: 0px;
+        top: 2px;
+      }
+
+      .tips-down {
+        width: 360px;
+        right: 0;
+        padding: 1.5625rem;
+        border: 1px solid #d7dde2;
+        background: #fff;
+        color: $darkGray;
+        font-size: 0.8125rem;
+        line-height: 1.54;
+        cursor: default;
+        box-shadow: 0 0 10px 1px rgba(17, 17, 17, 0.1);
+        font-weight: 400;
+        z-index: 99;
+        position: absolute;
+        transition: all 0.2s ease-in-out;
+        user-select: text;
+
+        &::after {
+          content: "";
+          border-width: 8px;
+          border-style: solid;
+          border-color: transparent transparent white transparent;
+          position: absolute;
+          right: 12px;
+          top: -16px;
+          filter: drop-shadow(0px -1px 0px #d7dde2);
+        }
+
+        .list-tips {
+          border: 1px dashed $lightGray;
+          background-color: #fffef9;
+          padding: 20px;
+
+          li {
+            font-size: 0.8125rem;
+            position: relative;
+            margin-bottom: 1rem;
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 7px;
+              left: 0;
+              width: 5px;
+              height: 5px;
+              background-color: $darkGray;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .add {
     text-decoration: none;
-    // margin: 1rem 0 3rem;
     display: inline-flex;
     font-weight: 600;
+    cursor: pointer;
+    color: $primary;
   }
 
   .add-job {
     text-decoration: none;
     display: inline-flex;
     font-weight: 600;
+    cursor: pointer;
+    color: $primary;
   }
 }
 
 @keyframes animateBG {
   0% {
-    // transform: translateY(5px);
     opacity: 0;
   }
   100% {
-    // transform: translateY(0px);
     opacity: 1;
+  }
+}
+
+@keyframes tipsAnimate {
+  0% {
+    top: 4.375rem;
+  }
+  100% {
+    top: 3.125rem;
   }
 }

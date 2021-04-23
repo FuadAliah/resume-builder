@@ -1,5 +1,6 @@
 import { useState, useLayoutEffect } from "react";
 import { Tabs, Tab, TabPanel, TabList } from "react-web-tabs";
+import { Link } from "react-router-dom";
 
 import { InternalHeader } from "../Header/Header";
 import Course from "./Course";
@@ -18,20 +19,43 @@ import defImg from "../../images/profile.png";
 
 import "react-web-tabs/dist/react-web-tabs.css";
 import "./Application.scss";
+import { TIPS } from "../Fetch/TipsData";
 
 const Application = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(data);
-
-  const [personal, setPersonal] = useState({ image: "", defimg: defImg, imgStatus: "", first: "", last: "", country: "", region: "", email: "", phone: "", birthday: "", marital: "" });
+  const [personal, setPersonal] = useState({
+    image: "",
+    defimg: defImg,
+    first: "",
+    last: "",
+    country: "",
+    region: "",
+    email: "",
+    phone: "",
+    birthday: "",
+    marital: "",
+  });
   const [education, setEducation] = useState({ university: "", date: "", degree: "", field: "" });
   const [additional, setAdditional] = useState({ skills: "", objective: "", maxLength: 300 });
 
   const [languages, setLanguages] = useState([{ language: "", level: "" }]);
   const [courses, setCourses] = useState([{ institution: "", topic: "" }]);
   const [experiences, setExperiences] = useState([{ company: "", title: "", type: "", start: "", end: "", description: "", still: false }]);
+  const [Tips, setTips] = useState({ experiencesTips: false, educationTips: false, skillsTips: false });
+
+  const handleExperiencesTips = () => {
+    setTips({ ...Tips, experiencesTips: !Tips.experiencesTips });
+  };
+
+  const handleEducationTips = () => {
+    setTips({ ...Tips, educationTips: !Tips.educationTips });
+  };
+
+  const handleSkillsTips = () => {
+    setTips({ ...Tips, skillsTips: !Tips.skillsTips });
+  };
 
   const handleSelectStyle = e => {
     const { type } = e.target;
@@ -48,9 +72,7 @@ const Application = () => {
     reader.onload = () => {
       let personalData = { ...personal };
       personalData.image = reader.result;
-      setTimeout(() => {
-        setPersonal(personalData);
-      }, 100);
+      setTimeout(() => setPersonal(personalData), 100);
     };
     if (e.target.files[0]) reader.readAsDataURL(e.target.files[0]);
   };
@@ -81,17 +103,11 @@ const Application = () => {
     setExperiences(experiencesList);
   };
 
-  const AddLanguage = () => {
-    setLanguages([...languages, { language: "", level: "" }]);
-  };
+  const AddLanguage = () => setLanguages([...languages, { language: "", level: "" }]);
 
-  const AddCourse = () => {
-    setCourses([...courses, { institution: "", topic: "" }]);
-  };
+  const AddCourse = () => setCourses([...courses, { institution: "", topic: "" }]);
 
-  const AddExperience = () => {
-    setExperiences([...experiences, { company: "", title: "", type: "", start: "", end: "", description: "", still: false }]);
-  };
+  const AddExperience = () => setExperiences([...experiences, { company: "", title: "", type: "", start: "", end: "", description: "", still: false }]);
 
   const DeleteItem = (item, idx) => {
     if (item.length > 1) item.splice(idx, 1);
@@ -99,7 +115,7 @@ const Application = () => {
 
   const handlePersonalStorage = e => {
     e.preventDefault();
-    setData({ personal });
+    setData({ ...data, personal });
     const currentTab = document.querySelector("[aria-selected='true']");
     currentTab.classList.add("done");
     currentTab.nextSibling.click();
@@ -107,7 +123,7 @@ const Application = () => {
 
   const handleEducationStorage = e => {
     e.preventDefault();
-    setData({ personal, education, courses });
+    setData({ ...data, education, courses });
     const currentTab = document.querySelector("[aria-selected='true']");
     if (education.university) currentTab.classList.add("done");
     currentTab.nextSibling.click();
@@ -115,24 +131,23 @@ const Application = () => {
 
   const handleExperienceStorage = e => {
     e.preventDefault();
-    setData({ personal, education, courses, experiences });
+    setData({ ...data, experiences });
     const currentTab = document.querySelector("[aria-selected='true']");
-    if (experiences.company) currentTab.classList.add("done");
+    if (experiences[0].company) currentTab.classList.add("done");
     currentTab.nextSibling.click();
   };
 
   const handleFinish = e => {
     e.preventDefault();
-    setData({ personal, education, courses, experiences, languages, additional });
+    setData({ ...data, languages, additional });
     const currentTab = document.querySelector("[aria-selected='true']");
     currentTab.classList.add("done");
+    console.log(data);
     // window.location.pathname = "/data";
   };
 
   useLayoutEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    setTimeout(() => setIsLoading(false), 1000);
   }, [isLoading]);
 
   return (
@@ -147,9 +162,7 @@ const Application = () => {
                 <Tab tabFor="vertical-tab-two" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
                   Educational Information
                 </Tab>
-                <Tab tabFor="vertical-tab-three" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
-                  Experience Information
-                </Tab>
+                <Tab tabFor="vertical-tab-three">Experience Information</Tab>
                 <Tab tabFor="vertical-tab-four" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
                   Additional Information
                 </Tab>
@@ -179,6 +192,27 @@ const Application = () => {
               </TabPanel>
 
               <TabPanel tabId="vertical-tab-two">
+                <div className="head mb-5 d-flex justify-content-between">
+                  <div className="subject">
+                    <p className="mb-2">Great, let’s work on your education</p>
+                    <h6 className="m-0">We’ll take care of the formatting so it’s easy to find.</h6>
+                  </div>
+                  <div className="tips position-relative d-flex mt-2" onClick={handleEducationTips}>
+                    TIPS
+                    <div
+                      className="tips-down"
+                      style={{ visibility: `${Tips.educationTips ? "visible" : "hidden"}`, top: `${Tips.educationTips ? "2.7rem" : "3.5rem"}`, opacity: `${Tips.educationTips ? "1" : "0"}` }}>
+                      <p className="mb-4">{TIPS.education.paragraph}</p>
+                      <ul className="list-tips list-group">
+                        {TIPS.education.keys.map((data, idx) => (
+                          <li key={idx} className="ps-3 list-group">
+                            {data}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
                 <form onSubmit={handleEducationStorage}>
                   <div className="d-flex justify-content-between mb-4">
                     <Input type="text" placeholder="Ex. Havard University" id="university" lable="University or Institution" value={education.university} handleChange={handleEducation} />
@@ -194,33 +228,76 @@ const Application = () => {
                       <Course key={idx} idx={idx} DeleteItem={DeleteItem} course={course} courses={courses} handleCourse={handleCourse} />
                     ))}
                   </div>
-                  <a className="add" href="#/" onClick={AddCourse}>
+                  <Link to="/application" className="add" onClick={AddCourse} replace>
                     + Add Another Course
-                  </a>
+                  </Link>
                   <input className="btn button-primary save fw-bold" type="submit" value="Save & Next" />
                 </form>
               </TabPanel>
 
               <TabPanel tabId="vertical-tab-three">
+                <div className="head mb-5 d-flex justify-content-between">
+                  <div className="subject">
+                    <p className="mb-2">Tell us about your most recent job</p>
+                    <h6 className="m-0">Start with your most recent job and continue in order until your first job.</h6>
+                  </div>
+                  <div className="tips position-relative d-flex mt-2" onClick={handleExperiencesTips}>
+                    TIPS
+                    <div
+                      className="tips-down"
+                      style={{ visibility: `${Tips.experiencesTips ? "visible" : "hidden"}`, top: `${Tips.experiencesTips ? "2.7rem" : "3.5rem"}`, opacity: `${Tips.experiencesTips ? "1" : "0"}` }}>
+                      <p className="mb-4">{TIPS.experiences.paragraph}</p>
+                      <ul className="list-tips list-group">
+                        {TIPS.experiences.keys.map((data, idx) => (
+                          <li key={idx} className="ps-3 list-group">
+                            {data}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
                 <form className="job" onSubmit={handleExperienceStorage}>
                   {experiences?.map((job, idx) => (
                     <Job key={idx} DeleteItem={DeleteItem} experiences={experiences} handleExperiences={handleExperiences} idx={idx} job={job} />
                   ))}
-                  <a className="add-job" href="# " onClick={AddExperience}>
+                  <Link to="/application" className="add-job" onClick={AddExperience} replace>
                     + Add Another Position
-                  </a>
+                  </Link>
                   <input className="btn button-primary save fw-bold" type="submit" value="Save & Next" />
                 </form>
               </TabPanel>
 
               <TabPanel tabId="vertical-tab-four">
+                <div className="head mb-5 d-flex justify-content-between">
+                  <div className="subject">
+                    <p className="mb-2">Next, let’s take care of your skills</p>
+                    <h6 className="m-0">Add a few skills to show employers what you're good at!</h6>
+                  </div>
+                  <div className="tips position-relative d-flex mt-2" aria-details="experiences" onClick={handleSkillsTips}>
+                    TIPS
+                    <div
+                      className="tips-down"
+                      style={{ visibility: `${Tips.skillsTips ? "visible" : "hidden"}`, top: `${Tips.skillsTips ? "2.7rem" : "3.5rem"}`, opacity: `${Tips.skillsTips ? "1" : "0"}` }}>
+                      <p className="mb-4">{TIPS.skills.paragraph}</p>
+                      <ul className="list-tips list-group">
+                        {TIPS.skills.keys.map((data, idx) => (
+                          <li key={idx} className="ps-3 list-group">
+                            {data}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
                 <form onSubmit={handleFinish}>
                   {languages?.map((language, idx) => (
                     <Language DeleteItem={DeleteItem} key={idx} idx={idx} language={language} languages={languages} handleLanguage={handleLanguage} />
                   ))}
-                  <a className="add" href="#fvd" onClick={AddLanguage}>
+                  <Link to="/application" className="add" onClick={AddLanguage} replace>
                     + Add Another Language
-                  </a>
+                  </Link>
                   <Input type="text" placeholder="Ex: HTML, JavaScript... etc" id="skills" lable="Skills" value={additional.skills} handleChange={handleAdditional} full />
                   <Textarea maxLength={additional.maxLength} id="objective" lable="Objective" value={additional.objective} handleChange={handleAdditional} />
                   <span className={`length position-absolute ${additional.maxLength - additional.objective.length < 10 ? "red" : ""}`}>
