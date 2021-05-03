@@ -1,9 +1,8 @@
 import { useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import Background from "../Background/Background";
 import { MainHeader } from "../Header/Header";
-import Charactor from "../../images/charactor.svg";
+import Charactor from "../../images/charactor.gif";
 
 import "./Home.scss";
 import "../../Style/_extends.scss";
@@ -35,9 +34,8 @@ function Home() {
                 <span className="d-flex check">No time limit on Free plan</span>
               </div>
             </div>
-            <img src={Charactor} alt="" />
+            <img className="charactor" src={Charactor} alt="" />
           </div>
-          <Background />
         </div>
       )}
 

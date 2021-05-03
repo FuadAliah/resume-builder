@@ -30,7 +30,7 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: $primary;
-  transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000000s ease-in-out;
 }
 
 input:-internal-autofill-selected {

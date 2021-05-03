@@ -3,9 +3,10 @@
 
 .file-container {
   margin-bottom: 2rem;
-  border: 1px solid #ced4da;
+  border: 1px solid #e4e4e4;
   border-radius: 5px;
   padding: 20px;
+  background-color: $white;
 
   input[type="file"] {
     opacity: 0;

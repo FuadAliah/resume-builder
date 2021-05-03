@@ -138,7 +138,10 @@ const Application = () => {
     setData({ ...data, languages, additional });
     const currentTab = document.querySelector("[aria-selected='true']");
     currentTab.classList.add("done");
-    console.log(data);
+    setTimeout(() => {
+      console.log(data);
+      localStorage.setItem("data", JSON.stringify(data));
+    }, 1000);
     // window.location.pathname = "/data";
   };
 
@@ -152,18 +155,18 @@ const Application = () => {
       {!isLoading && (
         <>
           <InternalHeader />
-          <div className="container mt-5">
-            <Tabs defaultTab="vertical-tab-one" vertical className="vertical-tabs">
-              <TabList className="me-4">
-                <Tab tabFor="vertical-tab-one">Personal Information</Tab>
+          <div className="containe">
+            <Tabs defaultTab="vertical-tab-one" vertical className="vertical-tabs flex-column align-items-start">
+              <TabList className="my-4">
+                <Tab tabFor="vertical-tab-one">Personal Info</Tab>
                 <Tab tabFor="vertical-tab-two" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
-                  Educational Information
+                  Education
                 </Tab>
                 <Tab tabFor="vertical-tab-three" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
-                  Experience Information
+                  Work Experience
                 </Tab>
                 <Tab tabFor="vertical-tab-four" disabled={!personal.first || !personal.last || !personal.email || !personal.phone || !personal.country || !personal.birthday || !personal.marital}>
-                  Additional Information
+                  Finalize
                 </Tab>
               </TabList>
 

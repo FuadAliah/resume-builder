@@ -2,24 +2,25 @@
 @import "../../Style/_fonts.scss";
 
 .content {
-  height: 100vh;
+  height: calc(100vh - 160px);
 
   .left-content {
     font-size: 40px;
     color: $darkGray;
+    width: 40%;
 
     .light {
       font-weight: 300;
       line-height: 1.2;
     }
-    
+
     .bold {
       font-weight: 500;
     }
 
     p {
       font-size: 1.125rem;
-      width: 60%;
+      width: 100%;
       margin: 1rem 0 1.75rem;
       font-family: $Josefin;
       color: $gray;
@@ -43,6 +44,9 @@
         height: 10px;
       }
     }
+  }
+  img.charactor {
+    width: 50%;
   }
 }
 

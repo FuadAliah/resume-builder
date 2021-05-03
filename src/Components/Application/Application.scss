@@ -1,241 +1,263 @@
 @import "../../Style/_color.scss";
 @import "../../Style/_extends.scss";
 
-.vertical-tabs {
-  font-family: "Open Sans", sans-serif;
-  counter-reset: count;
+.containe {
+  max-width: 960px;
+  margin: 0 auto;
 
-  .rwt__tablist {
-    width: 296px;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 0;
-    text-align: start;
+  .vertical-tabs {
+    font-family: "Open Sans", sans-serif;
+    counter-reset: count;
 
-    .rwt__tab {
-      text-align: start;
-      color: $lightGray;
-      transition: $trans-color;
-      font-size: 1rem;
-      position: relative;
-      width: fit-content;
-
-      &::before {
-        counter-increment: count;
-        content: counter(count);
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        background-color: $lightGray;
-        left: 0;
-        border-radius: 50%;
-        color: #fff;
-        justify-content: center;
-        font-size: 0.75rem;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-      }
-    }
-
-    .done {
-      color: $green;
-
-      &::before {
-        background-color: $green;
-        content: url(../../images/check.svg);
-      }
-    }
-
-    .rwt__tab[aria-selected="false"]:hover,
-    .rwt__tab:focus {
-      background-color: transparent;
-      color: darken($lightGray, 15%);
-    }
-    .rwt__tab[aria-selected="true"]:after {
-      content: none;
-    }
-    .rwt__tab[aria-selected="true"] {
-      color: $primary;
-
-      &::before {
-        background-color: $primary;
-        transition: $trans-bg;
-      }
-    }
-  }
-
-  .rwt__tabpanel {
-    width: 100%;
-    // background-color: $white;
-    border-radius: 5px;
-    padding: 15px 0px;
-    animation: animateBG 0.4s ease-in-out;
-    font-size: 0.875rem;
-    color: $darkGray;
-
-    form {
-      position: relative;
-
-      .title {
-        font-size: 1.25rem;
-        font-weight: 400;
-        color: $gray;
-      }
-
-      .still {
-        right: calc(48.5% + 30px);
-        z-index: 1;
-      }
-
-      .present {
-        width: 48.5%;
-
-        .pre {
-          font-size: 1rem;
-          margin-top: 24px;
-          color: $gray;
-          font-weight: 700;
-        }
-      }
-
-      .length {
-        bottom: 50px;
-        left: 0px;
-        color: $lightGray;
-
-        &.red {
-          color: $red;
-        }
-      }
-    }
-  }
-
-  .even-odd {
-    padding: 30px;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-
-    &:nth-of-type(odd) {
-      background-color: #f9f9f9;
-    }
-
-    &:nth-of-type(even) {
-      background-color: $white;
-      border: 1px solid #ececec;
-    }
-
-    .delete {
+    .rwt__tablist {
+      display: flex;
+      flex-direction: row;
+      border: 0;
+      margin: 0;
+      width: auto;
       position: absolute;
-      right: 12px;
-      top: 15px;
-      text-decoration: none;
-      color: $darkGray;
-      content: url(../../images/delete.svg);
-      cursor: pointer;
-      color: $primary;
-    }
+      top: 0;
+      right: 445px;
 
-    &:nth-child(1) .delete {
-      display: none;
-    }
-  }
+      .rwt__tab {
+        text-align: start;
+        color: $lightGray;
+        transition: $trans-color;
+        font-size: 0.875rem;
+        position: relative;
+        width: fit-content;
+        padding: 0rem 0.5rem 0rem 1.55rem;
+        margin-right: 1.5rem;
 
-  .head {
-    .subject {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    .tips {
-      font-weight: 600;
-      color: $info;
-      cursor: pointer;
-      padding-left: 1.125rem;
-      user-select: none;
-
-      &::before {
-        content: url("../../images/bulb.svg");
-        position: absolute;
-        left: 0px;
-        top: 2px;
-      }
-
-      .tips-down {
-        width: 360px;
-        right: 0;
-        padding: 1.5625rem;
-        border: 1px solid #d7dde2;
-        background: #fff;
-        color: $darkGray;
-        font-size: 0.8125rem;
-        line-height: 1.54;
-        cursor: default;
-        box-shadow: 0 0 10px 1px rgba(17, 17, 17, 0.1);
-        font-weight: 400;
-        z-index: 99;
-        position: absolute;
-        transition: all 0.2s ease-in-out;
-        user-select: text;
+        &::before {
+          counter-increment: count;
+          content: counter(count);
+          position: absolute;
+          top: 2px;
+          left: 0;
+          width: 18px;
+          height: 18px;
+          background-color: $lightGray;
+          border-radius: 50%;
+          color: #fff;
+          font-size: 0.7rem;
+          font-weight: 500;
+          display: grid;
+          place-items: center;
+        }
 
         &::after {
           content: "";
-          border-width: 8px;
-          border-style: solid;
-          border-color: transparent transparent white transparent;
           position: absolute;
-          right: 12px;
-          top: -16px;
-          filter: drop-shadow(0px -1px 0px #d7dde2);
+          top: 11px;
+          right: initial;
+          border: none;
+          width: 20px;
+          height: 2px;
+          background-color: #d7dde2;
+          margin-left: 5px;
         }
 
-        .list-tips {
-          border: 1px dashed $lightGray;
-          background-color: #fffef9;
-          padding: 20px;
+        &:last-of-type {
+          &::after {
+            content: none;
+          }
+        }
+      }
 
-          li {
-            font-size: 0.8125rem;
-            position: relative;
-            margin-bottom: 1rem;
-            &:last-of-type {
-              margin-bottom: 0;
-            }
+      .done {
+        color: $green;
 
-            &::before {
-              content: "";
-              position: absolute;
-              top: 7px;
-              left: 0;
-              width: 5px;
-              height: 5px;
-              background-color: $darkGray;
-              border-radius: 50%;
+        &::before {
+          background-color: $green;
+          content: url(../../images/check.svg);
+        }
+      }
+
+      .rwt__tab[aria-selected="false"]:hover,
+      .rwt__tab:focus {
+        background-color: transparent;
+        color: darken($lightGray, 15%);
+      }
+      .rwt__tab[aria-selected="true"] {
+        color: $primary;
+
+        &::before {
+          background-color: $primary;
+          transition: $trans-bg;
+        }
+      }
+    }
+
+    .rwt__tabpanel {
+      width: 100%;
+      border-radius: 5px;
+      animation: animateBG 0.4s ease-in-out;
+      font-size: 0.875rem;
+      color: $darkGray;
+      min-height: calc(100vh - 125px);
+      padding: 3rem 0;
+
+      form {
+        position: relative;
+
+        .title {
+          font-size: 1.25rem;
+          font-weight: 400;
+          color: $gray;
+        }
+
+        .still {
+          right: calc(48.5% + 30px);
+          z-index: 1;
+        }
+
+        .present {
+          width: 48.5%;
+
+          .pre {
+            font-size: 1rem;
+            margin-top: 24px;
+            color: $gray;
+            font-weight: 700;
+          }
+        }
+
+        .length {
+          bottom: 50px;
+          left: 0px;
+          color: $lightGray;
+
+          &.red {
+            color: $red;
+          }
+        }
+      }
+    }
+
+    .even-odd {
+      padding: 30px;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+
+      &:nth-of-type(odd) {
+        background-color: #f9f9f9;
+      }
+
+      &:nth-of-type(even) {
+        background-color: $white;
+        border: 1px solid #ececec;
+      }
+
+      .delete {
+        position: absolute;
+        right: 12px;
+        top: 15px;
+        text-decoration: none;
+        color: $darkGray;
+        content: url(../../images/delete.svg);
+        cursor: pointer;
+        color: $primary;
+      }
+
+      &:nth-child(1) .delete {
+        display: none;
+      }
+    }
+
+    .head {
+      .subject {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      .tips {
+        font-weight: 600;
+        color: $info;
+        cursor: pointer;
+        padding-left: 1.125rem;
+        user-select: none;
+
+        &::before {
+          content: url("../../images/bulb.svg");
+          position: absolute;
+          left: 0px;
+          top: 2px;
+        }
+
+        .tips-down {
+          width: 360px;
+          right: 0;
+          padding: 1.5625rem;
+          border: 1px solid #d7dde2;
+          background: #fff;
+          color: $darkGray;
+          font-size: 0.8125rem;
+          line-height: 1.54;
+          cursor: default;
+          box-shadow: 0 0 10px 1px rgba(17, 17, 17, 0.1);
+          font-weight: 400;
+          z-index: 99;
+          position: absolute;
+          transition: all 0.2s ease-in-out;
+          user-select: text;
+
+          &::after {
+            content: "";
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent white transparent;
+            position: absolute;
+            right: 12px;
+            top: -16px;
+            filter: drop-shadow(0px -1px 0px #d7dde2);
+          }
+
+          .list-tips {
+            border: 1px dashed $lightGray;
+            background-color: #fffef9;
+            padding: 20px;
+
+            li {
+              font-size: 0.8125rem;
+              position: relative;
+              margin-bottom: 1rem;
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                top: 7px;
+                left: 0;
+                width: 5px;
+                height: 5px;
+                background-color: $darkGray;
+                border-radius: 50%;
+              }
             }
           }
         }
       }
     }
-  }
 
-  .add {
-    text-decoration: none;
-    display: inline-flex;
-    font-weight: 600;
-    cursor: pointer;
-    color: $primary;
-  }
+    .add {
+      text-decoration: none;
+      display: inline-flex;
+      font-weight: 600;
+      cursor: pointer;
+      color: $primary;
+    }
 
-  .add-job {
-    text-decoration: none;
-    display: inline-flex;
-    font-weight: 600;
-    cursor: pointer;
-    color: $primary;
+    .add-job {
+      text-decoration: none;
+      display: inline-flex;
+      font-weight: 600;
+      cursor: pointer;
+      color: $primary;
+    }
   }
 }
-
 @keyframes animateBG {
   0% {
     opacity: 0;

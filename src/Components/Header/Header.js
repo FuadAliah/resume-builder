@@ -1,13 +1,30 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 
 export const MainHeader = () => {
   return (
     <header className="main-header d-flex align-items-center">
-      <nav className="navbar navbar-light bg-transparent">
-        <a className="navbar-brand logo" href="/">
+      <nav className="custom-navbar navbar navbar-light bg-transparent p-0">
+        <Link to="/" className="navbar-brand logo p-0 m-0">
           {"CV Builder".toUpperCase()}
-        </a>
+        </Link>
+        <ul className="links navbar-nav d-flex flex-row">
+          <li className="link nav-item me-4">
+            <Link to="/resources" className="nav-link">
+              Resources
+            </Link>
+          </li>
+          <li className="link nav-item">
+            <Link className="nav-link" to="/sign-in">
+              Sign In
+            </Link>
+          </li>
+          <li className="link nav-item">
+            <Link className="nav-link" to="/sign-up">
+              Get Started
+            </Link>
+          </li>
+        </ul>
       </nav>
     </header>
   );
@@ -15,12 +32,12 @@ export const MainHeader = () => {
 
 export const InternalHeader = () => {
   return (
-    <header className="internal-header d-flex align-items-center">
+    <header className="internal-header bg-white d-flex align-items-center">
       <div className="container">
         <nav className="navbar-primary navbar">
-          <a className="navbar-brand logo" href="/application">
+          <Link to="/application" className="navbar-brand logo">
             {"CV Builder".toUpperCase()}
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
