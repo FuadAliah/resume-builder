@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/resume-builder/static/css/main.f9b235b5.chunk.css",
-    "main.js": "/resume-builder/static/js/main.051b4a45.chunk.js",
-    "main.js.map": "/resume-builder/static/js/main.051b4a45.chunk.js.map",
+    "main.css": "/resume-builder/static/css/main.bf17fe58.chunk.css",
+    "main.js": "/resume-builder/static/js/main.27381038.chunk.js",
+    "main.js.map": "/resume-builder/static/js/main.27381038.chunk.js.map",
     "runtime-main.js": "/resume-builder/static/js/runtime-main.9b1b92fb.js",
     "runtime-main.js.map": "/resume-builder/static/js/runtime-main.9b1b92fb.js.map",
     "static/css/2.a45dd38f.chunk.css": "/resume-builder/static/css/2.a45dd38f.chunk.css",
-    "static/js/2.07d58193.chunk.js": "/resume-builder/static/js/2.07d58193.chunk.js",
-    "static/js/2.07d58193.chunk.js.map": "/resume-builder/static/js/2.07d58193.chunk.js.map",
+    "static/js/2.6693236d.chunk.js": "/resume-builder/static/js/2.6693236d.chunk.js",
+    "static/js/2.6693236d.chunk.js.map": "/resume-builder/static/js/2.6693236d.chunk.js.map",
     "static/js/3.4a05444d.chunk.js": "/resume-builder/static/js/3.4a05444d.chunk.js",
     "static/js/3.4a05444d.chunk.js.map": "/resume-builder/static/js/3.4a05444d.chunk.js.map",
     "index.html": "/resume-builder/index.html",
     "static/css/2.a45dd38f.chunk.css.map": "/resume-builder/static/css/2.a45dd38f.chunk.css.map",
-    "static/css/main.f9b235b5.chunk.css.map": "/resume-builder/static/css/main.f9b235b5.chunk.css.map",
-    "static/js/2.07d58193.chunk.js.LICENSE.txt": "/resume-builder/static/js/2.07d58193.chunk.js.LICENSE.txt",
+    "static/css/main.bf17fe58.chunk.css.map": "/resume-builder/static/css/main.bf17fe58.chunk.css.map",
+    "static/js/2.6693236d.chunk.js.LICENSE.txt": "/resume-builder/static/js/2.6693236d.chunk.js.LICENSE.txt",
     "static/media/Application.scss": "/resume-builder/static/media/delete.aedba0d3.svg",
     "static/media/_input.scss": "/resume-builder/static/media/calendar.f5b77056.svg",
-    "static/media/charactor.e9ec8cbc.gif": "/resume-builder/static/media/charactor.e9ec8cbc.gif",
+    "static/media/charactor.58fc0297.png": "/resume-builder/static/media/charactor.58fc0297.png",
     "static/media/profile.57351d8c.png": "/resume-builder/static/media/profile.57351d8c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.9b1b92fb.js",
     "static/css/2.a45dd38f.chunk.css",
-    "static/js/2.07d58193.chunk.js",
-    "static/css/main.f9b235b5.chunk.css",
-    "static/js/main.051b4a45.chunk.js"
+    "static/js/2.6693236d.chunk.js",
+    "static/css/main.bf17fe58.chunk.css",
+    "static/js/main.27381038.chunk.js"
   ]
 }
