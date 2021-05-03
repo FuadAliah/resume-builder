@@ -8,7 +8,7 @@ export const MainHeader = () => {
         <Link to="/" className="navbar-brand logo p-0 m-0">
           {"CV Builder".toUpperCase()}
         </Link>
-        <ul className="links navbar-nav d-flex flex-row">
+        {/* <ul className="links navbar-nav d-flex flex-row">
           <li className="link nav-item me-4">
             <Link to="/resources" className="nav-link">
               Resources
@@ -24,7 +24,7 @@ export const MainHeader = () => {
               Get Started
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </header>
   );

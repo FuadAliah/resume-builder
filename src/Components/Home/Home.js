@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { MainHeader } from "../Header/Header";
-import Charactor from "../../images/charactor.gif";
+import Charactor from "../../images/charactor.png";
 
 import "./Home.scss";
 import "../../Style/_extends.scss";
